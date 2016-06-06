@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define TAM 10
+#include <stdlib.h>
 
 void quickSort(int vet[], int esq, int dir){
   int i, j, x, y;
@@ -31,15 +31,21 @@ void quickSort(int vet[], int esq, int dir){
 }
 
 int main(int argc, const char* argv[]){
-    int vet[TAM], i;
 
-    for(i = 0; i < TAM; i++){
+    int tam = 0;
+
+    printf("Informe o tamanho do vetor: ");
+    scanf("%d", &tam);
+
+    int vet[tam], i;
+
+    for(i = 0; i < tam; i++){
       scanf("%d", &vet[i]);
     }
 
-    quickSort(vet,0,TAM-1);
+    quickSort(vet,0,tam-1);
 
-    for(i = 0; i < TAM; i++){
+    for(i = 0; i < tam; i++){
       printf("%d ", vet[i]);
     }
     printf("\n");
