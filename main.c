@@ -2,38 +2,48 @@
 #include <stdlib.h>
 
 void quickSort(int vet[], int esq, int dir){
-  int i, j, x, y;
+  int i, j, pivo, aux;
   i = esq;
   j = dir;
-  x = vet[(esq+dir)/2];
+  pivo = vet[(esq+dir)/2];
+  printf("Pivo: %d\n", pivo);
 
   while(i <= j){
-    while(vet[i] < x && i < dir){
+    while(vet[i] < pivo && i < dir){
         i++;
     }
-    while(vet[j] > x && j > esq){
+    while(vet[j] > pivo && j > esq){
         j--;
     }
     if(i <= j){
-        y = vet[i];
+        printf("Trocas: %d %d\n", vet[i], vet[j]);
+        aux = vet[i];
         vet[i] = vet[j];
-        vet[j] = y;
+        vet[j] = aux;
         i++;
         j--;
     }
+    int cont;
+    for(cont = 0; cont < 10; cont++){
+        printf("%d ", vet[cont]);
+    }
+    printf("\n");
   }
   if(j > esq){
+    printf("Ramo esquerdo:\n");
     quickSort(vet, esq, j);
   }
   if(i < dir){
+      printf("Ramo direito:\n");
     quickSort(vet,i, dir);
   }
 }
 
 int main(int argc, const char* argv[]){
 
-    int tam = 0;
-
+    int tam = 10, i;
+    int vet[10] = {8,1,7,2,3,4,5,9,0,6};
+    /*
     printf("Informe o tamanho do vetor: ");
     scanf("%d", &tam);
 
@@ -42,6 +52,7 @@ int main(int argc, const char* argv[]){
     for(i = 0; i < tam; i++){
       scanf("%d", &vet[i]);
     }
+    */
 
     quickSort(vet,0,tam-1);
 
