@@ -5,4 +5,9 @@ Cormen, T.~H., Leiserson, C.~E., Rivest, R.~L., and Stein, C. (2009).
 \newblock {\em Introduction to Algorithms, Third Edition}.
 \newblock The MIT Press, 3rd edition.
 
+\bibitem[Wild 2013]{wild}
+Wild, S. (2013).
+\newblock Java 7's dual pivot quicksort.
+\newblock Master's thesis, Technische Universitat Kaiserslautern.
+
 \end{thebibliography}

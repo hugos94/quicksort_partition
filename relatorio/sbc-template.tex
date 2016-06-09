@@ -41,6 +41,8 @@
 
 \section{\textit{QuickSort}}
 
+\subsection{Dimensão de Desempenho}
+
 \subsection{Número de Comparações}
 
 Ambos os métodos podem ser implementados utilizando ${n - 1}$ comparações para particionar um \textit{array} de comprimento ${n}$. Isto é essencialmente ideal, uma vez que precisamos comparar cada elemento com o pivô para decidir onde colocá-lo.
@@ -63,11 +65,29 @@ trocas, em média, para particionar um \textit{array} de comprimento ${n}$ com o 
 
 \subsection{Método de \textit{Hoare}}
 
+Para este método, a análise é um pouco mais complexa. Mesmo fixando o pivô ${x}$, o número de trocas permanece aleatório.
+
+Mais precisamente: os índices ${i}$ e ${j}$ correm um em direção ao outro até que eles se cruzem, que sempre acontece em ${x}$ (por correção do algoritmo de particionamento de \textit{Hoare}). Isto divide eficazmente o \textit{array} em duas partes: a parte esquerda que é verificada pela variável índice ${i}$ e uma parte direita que é verificada pela variável índice ${j}$.
+
+Agora, uma troca é feita para cada par de elementos "fora do lugar", isto é, um elemento grande (maior do que ${x}$, que pertence a partição direita) que atualmente está localizado na partição esquerda e um elemento pequeno localizado na partição direita. Note-se que este par formado trabalha sempre para fora, ou seja, o número de pequenos elementos inicialmente na partição direita é igual ao número de grandes elementos na partição esquerda.
+
+Pode-se mostrar que o número destes pares é hiper geometricamente distribuído ${Hyp(n-1,n-x,x-1)}$: para os ${n - x}$ maiores elementos nós aleatoriamente traçamos suas posições no \textit{array} e temos ${x - 1}$ posições na partição esquerda . Por conseguinte, o número esperado de pares é ${(n-x)(x-1)/(n-1)}$ dado que o pivô é ${x}$.
+
+Finalmente, nós tiramos a média de todos os valores dos pivôs para obter o número total esperado de trocas para o método de particionamento de \textit{Hoare}:
+
+\begin{equation}
+\frac{1}{n}\sum_{x=1}^{n}\frac{(n - x)(x - 1)}{n - 1} = \frac{n}{6} - \frac{1}{3}.
+\end{equation} 
+
+Mais informações podem ser encontradas em \cite{wild}.
+
 \subsection{Padrão de Acesso a Memória}
 
 Ambos os algoritmos usam dois ponteiros que escaneiam o \textit{array} sequencialmente. Portanto, ambos possuem comportamento quase ideal.
 
-\section{Resultados} \label{sec:firstpage}
+\subsection{Elementos iguais e Listas Ordenadas}
+
+\section{Resultados}
 
 \section{Conclusão}
 
@@ -75,20 +95,20 @@ O método de \textit{Lomuto} é simples e de fácil implementação, porém, não deve 
 
 
 
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.5\textwidth]{fig1.jpg}
-\caption{A typical figure}
-\label{fig:exampleFig1}
-\end{figure}
-
-\begin{figure}[ht]
-\centering
-\includegraphics[width=.3\textwidth]{fig2.jpg}
-\caption{This figure is an example of a figure caption taking more than one
-  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
-\label{fig:exampleFig2}
-\end{figure}
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=.5\textwidth]{fig1.jpg}
+%\caption{A typical figure}
+%\label{fig:exampleFig1}
+%\end{figure}
+%
+%\begin{figure}[ht]
+%\centering
+%\includegraphics[width=.3\textwidth]{fig2.jpg}
+%\caption{This figure is an example of a figure caption taking more than one
+%  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
+%\label{fig:exampleFig2}
+%\end{figure}
 
 
 \bibliographystyle{sbc}
