@@ -36,11 +36,42 @@
 
 \section{Introdução}
 
-\section{QuickSort}
+
+
+
+\section{\textit{QuickSort}}
+
+\subsection{Número de Comparações}
+
+Ambos os métodos podem ser implementados utilizando ${n - 1}$ comparações para particionar um \textit{array} de comprimento ${n}$. Isto é essencialmente ideal, uma vez que precisamos comparar cada elemento com o pivô para decidir onde colocá-lo.
+
+\subsection{Número de Trocas}
+
+O número de trocas é aleatório para ambos os algoritmos, dependendo dos elementos no \textit{array}. Se assumirmos permutações aleatórias, ou seja, todos os elementos são distintos e cada permutação dos elementos é igualmente provável, podemos analisar o número esperado de trocas.
+
+Como apenas a ordem relativa conta, assumimos que os elementos são os números $1, ..., n$. Isso faz com que a discussão abaixo se torne mais fácil pois a posição de um elemento e seu valor coincidem.
+
+\subsection{Método de \textit{Lomuto}}
+
+A variável índice ${j}$ escaneia o \textit{array} completo e sempre que encontra um elemento ${A[j]}$ menor que o pivô ${x}$, a troca é realizada. Entre os elementos ${1, ..., n}$, exatamente ${x - 1}$ são menores que ${x}$, então nós teremos ${x-1}$ trocas se o pivô for ${x}$.
+
+A expectativa geral então resulta do cálculo da média de todos os pivôs. Cada valor em ${\{1, ... ,n\}}$ tem a mesma probabilidade de se tornar pivô (especificamente probabilidade de  $\frac{1}{n}$), então temos
+\begin{equation}
+\frac{1}{n}\sum_{x=1}^{n}(x - 1) = \frac{n}{2} - \frac{1}{2}
+\end{equation} 
+trocas, em média, para particionar um \textit{array} de comprimento ${n}$ com o método de \textit{Lomuto}.
+
+\subsection{Método de \textit{Hoare}}
+
+\subsection{Padrão de Acesso a Memória}
+
+Ambos os algoritmos usam dois ponteiros que escaneiam o \textit{array} sequencialmente. Portanto, ambos possuem comportamento quase ideal.
 
 \section{Resultados} \label{sec:firstpage}
 
 \section{Conclusão}
+
+O método de \textit{Lomuto} é simples e de fácil implementação, porém, não deve ser utilizado quando alto desempenho é exigido.
 
 
 
