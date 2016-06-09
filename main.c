@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -26,7 +27,7 @@ int main(int argc, const char* argv[]){
 
     printf("Métodos de Partição:\n1 - Hoare\n2 - Lomuto\n3 - One-sided\n4 - Gries\n5 - Sedgewick\n\n");
 
-    printf("Informe o método de partição a ser utilizado: ")
+    printf("Informe o método de partição a ser utilizado: ");
     scanf("%d", &partition);
 
     quickSort(vet,0,qntd-1); //Chama a função QuickSort
@@ -73,3 +74,38 @@ void quickSort(int vet[], int esq, int dir){
     quickSort(vet,i, dir);
   }
 }
+
+int hoare_partition(int vet[], int esq, int dir){
+    int x = vet[esq];
+    int i = esq - 1;
+    int j = dir + 1;
+    while(true){
+        while(vet[j] <= x){
+            j--;
+        }
+        while(vet[i] >= x){
+            i++;
+        }
+        if(i < j){
+            swap(vet[i], vet[j]);
+        }else{
+        return j;
+        }
+    }
+}
+
+int lomuto_partition(int vet[], int esq, int dir){
+    int x = vet[dir];
+    int i = esq - 1;
+    int j;
+    for(j = esq; j <= dir-1; j++){
+        if(vet[j] <= x){
+            i++;
+            swap(vet[i], vet[j]);
+        }
+    }
+    swap(vet[i+1], vet[dir]);
+    return (i+1);
+}
+
+void swap(int a, int b){int aux = a; a = b; b = aux;}
