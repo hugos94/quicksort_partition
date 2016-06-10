@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.13)  9 JUN 2016 20:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.13)  10 JUN 2016 18:08
 entering extended mode
 **./sbc-template.tex
 (sbc-template.tex
@@ -246,33 +246,33 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <13> not available
  [1
 
 {C:/Users/francisco/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-(sbc-template.bbl) [2] (sbc-template.aux) ) 
+[2] (sbc-template.bbl) [3] (sbc-template.aux) ) 
 Here is how much of TeX's memory you used:
- 2303 strings out of 493634
- 32629 string characters out of 3133607
- 97967 words of memory out of 3000000
- 5670 multiletter control sequences out of 15000+200000
+ 2304 strings out of 493634
+ 32637 string characters out of 3133607
+ 98967 words of memory out of 3000000
+ 5671 multiletter control sequences out of 15000+200000
  21446 words of font info for 44 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 30i,10n,29p,475b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/francisco/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Users/francisco/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/fr
-ancisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12
-.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
-msfonts/cm/cmmi8.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/font
-s/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/francisco/AppData/Local/Programs
-/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/francisco/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/
-francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.pfb>
-<C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utm
-b8a.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/t
-imes/utmbi8a.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/urw/times/utmr8a.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/
-fonts/type1/urw/times/utmri8a.pfb>
-Output written on sbc-template.pdf (2 pages, 123376 bytes).
+ 30i,10n,29p,573b,317s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/francisco/AppData/Loca
+l/Programs/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Users/francisco/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/User
+s/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+mi12.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/francisco/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/francisco/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Us
+ers/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/courier/ucrr8a.
+pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times
+/utmb8a.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/u
+rw/times/utmbi8a.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 2.9/font
+s/type1/urw/times/utmr8a.pfb><C:/Users/francisco/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on sbc-template.pdf (3 pages, 127781 bytes).
 PDF statistics:
- 54 PDF objects out of 1000 (max. 8388607)
+ 57 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

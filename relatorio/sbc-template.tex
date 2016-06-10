@@ -43,6 +43,10 @@
 
 \subsection{Dimensão de Desempenho}
 
+Para uso prático, facilidade de implementação pode ser sacrificado em prol de eficiência. Em uma base teórica, podemos determinar o número de comparações de elementos e trocas para comparar o desempenho. Além disso, o tempo de funcionamento real será influenciado por outros fatores, como desempenho de \textit{caches} e escalonamento de \textit{threads}.
+
+Como será mostrado abaixo, os algoritmos possuem comportamento semelhante em permutações aleatórias, exceto pelo número de trocas. Aqui, o método de \textit{Lomuto} necessita de três vezes a mais que o de \textit{Hoare.}
+
 \subsection{Número de Comparações}
 
 Ambos os métodos podem ser implementados utilizando ${n - 1}$ comparações para particionar um \textit{array} de comprimento ${n}$. Isto é essencialmente ideal, uma vez que precisamos comparar cada elemento com o pivô para decidir onde colocá-lo.
@@ -79,13 +83,21 @@ Finalmente, nós tiramos a média de todos os valores dos pivôs para obter o númer
 \frac{1}{n}\sum_{x=1}^{n}\frac{(n - x)(x - 1)}{n - 1} = \frac{n}{6} - \frac{1}{3}.
 \end{equation} 
 
-Mais informações podem ser encontradas em \cite{wild}.
+Mais informações podem ser encontradas em \cite[Pág. 29]{wild}.
 
 \subsection{Padrão de Acesso a Memória}
 
 Ambos os algoritmos usam dois ponteiros que escaneiam o \textit{array} sequencialmente. Portanto, ambos possuem comportamento quase ideal.
 
 \subsection{Elementos iguais e Listas Ordenadas}
+
+A performance dos algoritmos diferem mais drasticamente para listas que não estão aleatoriamente permutadas.
+
+Em um \textit{array} já ordenado, o método de \textit{Hoare} não realiza nenhuma troca, já que não existem pares mal posicionados, ao passo que o método de \textit{Lomuto} realiza cerca de ${\frac{n}{2}}$ trocas.
+
+A presença de elementos iguais requere cuidados especiais na utilização do algoritmo \textit{Quicksort}. Considere um exemplo extremo onde um \textit{array} é preenchido apenas com elementos ${0}$. Para este \textit{array}, o método de \textit{Hoare} realiza um troca para cada par de elementos - configurando o pior caso para o particionamento de \textit{Hoare} - mas ${i}$ e ${j}$ sempre encontram-se no meio do \textit{array}. Assim, temos um particionamento ideal e o tempo total de execução permanece em ${\mathcal{O}(n \log{}n)}$.
+
+O método de \textit{Lomuto} possui comportamento pior para o \textit{array} apenas com elementos ${0}$: a comparação ${A[j] <= x}$ sempre irá retornar verdadeira, então serão realizadas trocas para todos os elementos. Entretanto piora: após o \textit{loop}, sempre teremos ${i = n}$, então observamos o pior caso de particionamento, fazendo com que a performance seja degradada para ${\Theta(n^{2})}$.
 
 \section{Resultados}
 
