@@ -10,7 +10,7 @@
      
 \sloppy
 
-\title{Análise de desempenho do particionamento do algoritmo \textit{QuickSort} para os métodos de \textit{Hoare} e \textit{Lomuto}}
+\title{Análise de desempenho do particionamento do algoritmo \textit{Quicksort} para os métodos de \textit{Hoare} e \textit{Lomuto}}
 
 \author{Eugenio Souza Carvalho\inst{1}, Hugo Santos Piauilino Neto\inst{1}}
 
@@ -30,7 +30,7 @@
 \end{abstract}
      
 \begin{resumo} 
-  Este trabalho apresenta uma análise de desempenho do particionamento do algoritmo de ordenação \textit{QuickSort} para os métodos propostos por \textit{Hoare} e \textit{Lomuto} \cite{cormen}, além de apresentar um resumo geral sobre a história e funcionamento do algoritmo de ordenação. 
+  Este trabalho apresenta uma análise de desempenho do particionamento do algoritmo de ordenação \textit{Quicksort} para os métodos propostos por \textit{Hoare} e \textit{Lomuto} \cite{cormen}, além de apresentar um resumo geral sobre a história e funcionamento do algoritmo de ordenação. 
 \end{resumo}
 
 
@@ -39,7 +39,7 @@
 
 
 
-\section{\textit{QuickSort}}
+\section{\textit{Quicksort}}
 
 \subsection{Dimensão de Desempenho}
 
@@ -100,6 +100,21 @@ A presença de elementos iguais requere cuidados especiais na utilização do algor
 O método de \textit{Lomuto} possui comportamento pior para o \textit{array} apenas com elementos ${0}$: a comparação ${A[j] <= x}$ sempre irá retornar verdadeira, então serão realizadas trocas para todos os elementos. Entretanto piora: após o \textit{loop}, sempre teremos ${i = n}$, então observamos o pior caso de particionamento, fazendo com que a performance seja degradada para ${\Theta(n^{2})}$.
 
 \section{Resultados}
+
+O algoritmo \textit{Quicksort} e os métodos de \textit{Hoare} e \textit{Lomuto} foram implementados utilizando a linguagem de programação C. O ambiente de desenvolvimento integrado (IDE - Integrated Development )
+
+Windows 10 pro
+AMD Phenom(tm) II X4 B97 Processor 3.20 GHz
+Sistema operacional de 64 bits
+
+DDR3
+
+Linguagem C
+
+ Code::Blocks 13.12!
+ 
+ gcc (TDM-2 mingw32) 4.4.1 2009
+
 
 \section{Conclusão}
 
