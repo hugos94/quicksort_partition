@@ -3,14 +3,13 @@
 \usepackage{sbc-template}
 
 \usepackage{graphicx,url}
+\usepackage[brazil]{babel}   
+\usepackage[latin1]{inputenc}
+\usepackage[]{algorithm2e}  
 
-%\usepackage[brazil]{babel}   
-\usepackage[latin1]{inputenc}  
-
-     
 \sloppy
 
-\title{Análise de desempenho do particionamento do algoritmo \textit{Quicksort} para os métodos de \textit{Hoare} e \textit{Lomuto}}
+\title{Análise de desempenho do particionamento do algoritmo \textit{quicksort} para os métodos de \textit{Hoare} e \textit{Lomuto}}
 
 \author{Eugenio Souza Carvalho\inst{1}, Hugo Santos Piauilino Neto\inst{1}}
 
@@ -22,30 +21,79 @@
   \email{\{hugos94,eugeniucarvalho\}@gmail.com}
 }
 
+\SetKwProg{Fn}{Function}{}{}
+
 \begin{document} 
 
 \maketitle
 
 \begin{abstract}
+This paper presents a performance analysis of the \textit{quicksort} partitioning for the methods proposed by \textit{Hoare} and \textit{Lomuto} \cite{cormen}, in addition to a general overview of the history and operation of the sorting algorithm.
 \end{abstract}
-     
+
 \begin{resumo} 
-  Este trabalho apresenta uma análise de desempenho do particionamento do algoritmo de ordenação \textit{Quicksort} para os métodos propostos por \textit{Hoare} e \textit{Lomuto} \cite{cormen}, além de apresentar um resumo geral sobre a história e funcionamento do algoritmo de ordenação. 
+Este trabalho apresenta uma análise de desempenho do particionamento do algoritmo de ordenação \textit{quicksort} para os métodos propostos por \textit{Hoare} e \textit{Lomuto} \cite{cormen}, além de apresentar um resumo geral sobre a história e funcionamento do algoritmo de ordenação. 
 \end{resumo}
 
 
 \section{Introdução}
 
+Problemas são questões propostas em busca de uma solução. Com o propósito de conceder uma solução para certo problema, existem os algoritmos. Cada problema que é decídivel possui um algoritmo que determina uma solução para cada instância desse problema.
 
+Algoritmos descrevem passo a passo os procedimentos para chegar a uma solução de um problema e podem ser representados de três formas: descrição narrativa, fluxograma e a linguagem algoritma.
 
+Um tipo de algoritmo muito usado na resolução de problemas computacionais são os algoritmos de ordenação, que servem para ordenar/organizar uma lista de números ou palavras de acordo com a sua necessidade.
+
+Algoritmo de ordenação, em ciência da computação, é um algoritmo que coloca os elementos de uma dada sequência em uma certa ordem. Em outras palavras efetua sua ordenação completa ou parcial. O objetivo da ordenação é facilitar a recuperação dos dados de uma lista.
+
+Os mais populares algoritmos de ordenação são: \textit{insertionsort}, \textit{selectionsort}, \textit{bubblesort}, \textit{combsort}, \textit{quicksort}, \textit{mergesort}, \textit{heapsort} e \textit{shellsort}. Neste artigo será apresentado apenas o algoritmo \textit{quicksort}, explicando o seu funcionamento e suas peculiaridades.
 
 \section{\textit{Quicksort}}
+
+O \textit{quicksort} é um algoritmo de ordenação eficiente e muito rápido. Foi desenvolvido em 1961 por \textit{C.A.R. Hoare} \cite{hoare}, quando visitava a Universidade de \textit{Moscovo} como estudante.
+
+\textit{Hoare} trabalhava em um projeto de tradução de máquina para o \textit{National Physical Laboratory}. Ele criou o \textit{quicksort} ao tentar traduzir um dicionário de inglês para russo, ordenando as palavras, tendo como objetivo reduzir o problema original em subproblemas que poderiam ser resolvidos mais fácil e rapidamente. O algoritmo só foi publicado após uma série de refinamentos.
+
+O  \textit{quicksort} é um algoritmo de ordenação por comparação não-estável, ou seja, ele não preserva a ordem de registro de chaves iguais.
+
+\section{Estratégia Utilizada}
+
+O \textit{quicksort} adota a estratégoa de divisão e consquita. A estratégia consiste em rearranjar as chaves de modo que chaves "menores" precedam chaves "maiores". Em seguida o \textit{quicksort} ordena as duas sublistas de chaves menores e maiores recursivamente até que a lista completa se encontre ordenada \cite{baase}.
+
+O algoritmo \textit{quicksort} executa os seguintes passos:
+
+\begin{enumerate}
+	\item Escolha um elemento da lista, denominado pivô;
+	\item Rearranje a lista de forma que todos os elementos anteriores ao pivô sejam menores que ele, e todos os elementos posteriores ao pivô sejam maiores que ele. Ao fim do processo o pivô estará em sua posição final e haverão duas sublistas não-ordenadas. Essa operação é denominada particionameto;
+	\item Recursivamente ordene a sublista dos elementos menores e a sublista dos elementos maiores.
+\end{enumerate}
+
+A base da recursão são as listas de tamanho zero ou um, que estão sempre ordenadas. O processo é finito, pois a cada iteração pelo menos um elemento é posto em sua posição final e não será mais manipulado na iteração seguinte.
+
+\subsection{Pseudo-Código}
+
+O Algoritmo~\ref{quicksort} demonstra o pseudo-código para o algoritmo  \textit{quicksort}. Podemos verificar que a função \textit{quicksort} recebe como parâmetros de entrada um \textit{array} e as posições final e inicial deste \textit{array}. Logo, o método de particionamento escolhido é chamado e como resultado retorna um elemento pivô. Este pivô é utilizado para realizar as chamadas recursivas das sublistas esquerda e direita do elemento pivô. Quando as listas se tornarem de tamanho 1, o algoritmo retorna o \textit{array} devidamente ordenado.
+
+O método \textit{Partition} do Algoritmo~\ref{quicksort} dependerá do particionamento escolhido para executar o algoritmo.
+
+\begin{algorithm}[H]
+\Fn{quicksort (A[], primeiro, ultimo)}{
+	\If{$primeiro < ultimo$}{
+		pivo = Partition(A, primeiro, ultimo)\;
+		quicksort(A, primeiro, pivo-1)\;
+		quicksort(S, pivo+1, ultimo)\;
+	}
+}
+\KwResult{O algoritmo retorna o vetor ordenado.}
+\caption{Pseudo-código do algoritmo \textit{quicksort}.}
+\label{quicksort}
+\end{algorithm}
 
 \subsection{Dimensão de Desempenho}
 
 Para uso prático, facilidade de implementação pode ser sacrificado em prol de eficiência. Em uma base teórica, podemos determinar o número de comparações de elementos e trocas para comparar o desempenho. Além disso, o tempo de funcionamento real será influenciado por outros fatores, como desempenho de \textit{caches} e escalonamento de \textit{threads}.
 
-Como será mostrado abaixo, os algoritmos possuem comportamento semelhante em permutações aleatórias, exceto pelo número de trocas. Aqui, o método de \textit{Lomuto} necessita de três vezes a mais que o de \textit{Hoare.}
+Como será mostrado abaixo, os métodos possuem comportamento semelhante em permutações aleatórias, exceto pelo número de trocas. Aqui, o método de \textit{Lomuto} necessita de três vezes mais trocas do que o particionamento de \textit{Hoare.}
 
 \subsection{Número de Comparações}
 
@@ -87,56 +135,53 @@ Mais informações podem ser encontradas em \cite[Pág. 29]{wild}.
 
 \subsection{Padrão de Acesso a Memória}
 
-Ambos os algoritmos usam dois ponteiros que escaneiam o \textit{array} sequencialmente. Portanto, ambos possuem comportamento quase ideal.
+Ambos os métodos usam dois ponteiros que escaneiam o \textit{array} sequencialmente. Portanto, ambos possuem comportamento quase ideal.
 
-\subsection{Elementos iguais e Listas Ordenadas}
+\subsection{Elementos Iguais e Listas Ordenadas}
 
 A performance dos algoritmos diferem mais drasticamente para listas que não estão aleatoriamente permutadas.
 
 Em um \textit{array} já ordenado, o método de \textit{Hoare} não realiza nenhuma troca, já que não existem pares mal posicionados, ao passo que o método de \textit{Lomuto} realiza cerca de ${\frac{n}{2}}$ trocas.
 
-A presença de elementos iguais requere cuidados especiais na utilização do algoritmo \textit{Quicksort}. Considere um exemplo extremo onde um \textit{array} é preenchido apenas com elementos ${0}$. Para este \textit{array}, o método de \textit{Hoare} realiza um troca para cada par de elementos - configurando o pior caso para o particionamento de \textit{Hoare} - mas ${i}$ e ${j}$ sempre encontram-se no meio do \textit{array}. Assim, temos um particionamento ideal e o tempo total de execução permanece em ${\mathcal{O}(n \log{}n)}$.
+A presença de elementos iguais requere cuidados especiais na utilização do algoritmo \textit{quicksort}. Considere um exemplo extremo onde um \textit{array} é preenchido apenas com elementos ${0}$. Para este \textit{array}, o método de \textit{Hoare} realiza um troca para cada par de elementos - configurando o pior caso para o particionamento de \textit{Hoare} - mas ${i}$ e ${j}$ sempre encontram-se no meio do \textit{array}. Assim, temos um particionamento ideal e o tempo total de execução permanece em ${\mathcal{O}(n \log{}n)}$.
 
-O método de \textit{Lomuto} possui comportamento pior para o \textit{array} apenas com elementos ${0}$: a comparação ${A[j] <= x}$ sempre irá retornar verdadeira, então serão realizadas trocas para todos os elementos. Entretanto piora: após o \textit{loop}, sempre teremos ${i = n}$, então observamos o pior caso de particionamento, fazendo com que a performance seja degradada para ${\Theta(n^{2})}$.
+O método de \textit{Lomuto} possui comportamento pior para o \textit{array} apenas com elementos ${0}$: a comparação ${A[j] <= x}$ sempre irá retornar verdadeira, então serão realizadas trocas para todos os elementos. Entretanto piora: após o \textit{loop}, sempre teremos ${i = n}$, então observamos o pior caso de particionamento, fazendo com que a performance do método seja degradada para ${\Theta(n^{2})}$.
+
+\section{Materiais}
+
+\subsection{\textit{Software}}
+O algoritmo \textit{quicksort} e os métodos de \textit{Hoare} e \textit{Lomuto} foram implementados utilizando a linguagem de programação C. Para a compilação, foi utilizado o compilador gcc (TDM-2 mingw32) versão 4.4.1 2009 \cite{mingw}.
+
+O ambiente de desenvolvimento integrado (IDE - \textit{Integrated Development Environment}) utilizado foi o Code::Blocks versão 13.12 \cite{codeblocks}.
+
+O sistema operacional utilizado para realizar as simulações foi o \textit{Windows} 10 de 64 bits versão \textit{Professional} \cite{windows}. 
+
+\subsection{\textit{Hardware}}
+
+A máquina utilizada para realizar as simulações possui processador AMD Phenom(tm) II X4 B97 Processor 3.20 GHz com três pentes de memória RAM de 4 GB DDR3 2000Mhz, totalizando 12 GB de memória RAM.
 
 \section{Resultados}
 
-O algoritmo \textit{Quicksort} e os métodos de \textit{Hoare} e \textit{Lomuto} foram implementados utilizando a linguagem de programação C. O ambiente de desenvolvimento integrado (IDE - Integrated Development )
+Para comparar os métodos, foram escolhidos dez diferentes tamanhos para o \textit{array}: 100, 500, 1.000, 5.000, 30.000, 80.000, 100.000, 150.000 e 200.000 elementos.
 
-Windows 10 pro
-AMD Phenom(tm) II X4 B97 Processor 3.20 GHz
-Sistema operacional de 64 bits
+Para cada tamanho especificado foram gerados \textit{arrays} de números aleatórios, permitindo valores repetidos. Foram realizadas 5 simulações para cada tamanho em cada método. A média dos tempos de execuções foram utilizadas para realizar a análise comparativa.
 
-DDR3
+Podemos verificar na Figura~\ref{graph} que para pequenos tamanhos do \textit{array} de elementos, o método de \textit{Lomuto} executou mais rápido. Porém, ao aumentarmos o tamanho do \textit{array} de elementos, o método de \textit{Hoare} apresenta melhores tempos de execução.
 
-Linguagem C
+Isto mostra, que para pequenos conjuntos de elementos, o método de \textit{Lomuto} possui bom desempenho e que pode se equiparar ou ser até melhor que o método de \textit{Hoare}. Porém, para grandes conjuntos de elementos o método de \textit{Hoare} possui melhor desempenho.
 
- Code::Blocks 13.12!
- 
- gcc (TDM-2 mingw32) 4.4.1 2009
-
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1\textwidth]{grafico.png}
+\caption{Gráfico comparativo entre os tempo de execução dos métodos de \textit{Hoare} e \textit{Lomuto}.}
+\label{graph}
+\end{figure}
 
 \section{Conclusão}
 
-O método de \textit{Lomuto} é simples e de fácil implementação, porém, não deve ser utilizado quando alto desempenho é exigido.
+O método de \textit{Lomuto} é simples e de fácil implementação, porém, não deve ser utilizado quando alto desempenho é exigido. O método de \textit{Hoare} comporta-se melhor para problemas que exigem alto desempenho e possui um melhor comportamento para listas já ordenadas ou preenchidas apenas com valores 0.
 
-
-
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[width=.5\textwidth]{fig1.jpg}
-%\caption{A typical figure}
-%\label{fig:exampleFig1}
-%\end{figure}
-%
-%\begin{figure}[ht]
-%\centering
-%\includegraphics[width=.3\textwidth]{fig2.jpg}
-%\caption{This figure is an example of a figure caption taking more than one
-%  line and justified considering margins mentioned in Section~\ref{sec:figs}.}
-%\label{fig:exampleFig2}
-%\end{figure}
-
+Portanto, para utilização em softwares comerciais ou industriais, recomenda-se a utlização do método de \textit{Hoare}, ao invés do método de \textit{Lomuto}.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
