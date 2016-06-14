@@ -9,7 +9,7 @@
 
 \sloppy
 
-\title{Análise de desempenho do particionamento do algoritmo \textit{quicksort} para os métodos de \textit{Hoare} e \textit{Lomuto}}
+\title{Análise de desempenho do algoritmo \textit{quicksort} para os métodos de particionamento de \textit{Hoare} e \textit{Lomuto}}
 
 \author{Eugenio Souza Carvalho\inst{1}, Hugo Santos Piauilino Neto\inst{1}}
 
@@ -28,29 +28,27 @@
 \maketitle
 
 \begin{abstract}
-This paper presents a performance analysis of the \textit{quicksort} partitioning for the methods proposed by \textit{Hoare} and \textit{Lomuto} \cite{cormen}, in addition to a general overview of the history and operation of the sorting algorithm.
+This paper presents a performance analysis of \textit{quicksort} algorithm for partitioning methods proposed by \textit{Hoare} and \textit{Lomuto} \cite{cormen}, in addition to a general overview of the history and operation of the algorithm.
 \end{abstract}
 
 \begin{resumo} 
-Este trabalho apresenta uma análise de desempenho do particionamento do algoritmo de ordenação \textit{quicksort} para os métodos propostos por \textit{Hoare} e \textit{Lomuto} \cite{cormen}, além de apresentar um resumo geral sobre a história e funcionamento do algoritmo de ordenação. 
+Este trabalho apresenta uma análise de desempenho do algoritmo de ordenação \textit{quicksort} para os métodos de particionamento propostos por \textit{Hoare} e \textit{Lomuto} \cite{cormen}, além de apresentar um resumo geral sobre a história e funcionamento do algoritmo de ordenação. 
 \end{resumo}
 
 
 \section{Introdução}
 
-Problemas são questões propostas em busca de uma solução. Com o propósito de conceder uma solução para certo problema, existem os algoritmos. Cada problema que é decídivel possui um algoritmo que determina uma solução para cada instância desse problema.
+Problemas são questões propostas em busca de uma solução. Algoritmos são utilizados com o propósito de conceder uma solução para certo problema. Para todo problema decidível existe um algoritmo que determina uma solução para as instâncias desse problema.
 
-Algoritmos descrevem passo a passo os procedimentos para chegar a uma solução de um problema e podem ser representados de três formas: descrição narrativa, fluxograma e a linguagem algoritma.
+Algoritmos descrevem passo a passo os procedimentos para chegar a uma solução de um problema e podem ser representados de três formas: descrição narrativa, fluxograma e a linguagem algorítmica. Neste trabalho focaremos na utilização da última forma.
 
-Um tipo de algoritmo muito usado na resolução de problemas computacionais são os algoritmos de ordenação, que servem para ordenar/organizar uma lista de números ou palavras de acordo com a sua necessidade.
+Algoritmo de ordenação, em ciência da computação, é um algoritmo que coloca os elementos de uma dada sequência em uma certa ordem. Em outras palavras efetua sua ordenação completa ou parcial de acordo com uma necessidade pré-estabelecida. O objetivo da ordenação é facilitar a recuperação dos dados de uma lista.
 
-Algoritmo de ordenação, em ciência da computação, é um algoritmo que coloca os elementos de uma dada sequência em uma certa ordem. Em outras palavras efetua sua ordenação completa ou parcial. O objetivo da ordenação é facilitar a recuperação dos dados de uma lista.
-
-Os mais populares algoritmos de ordenação são: \textit{insertionsort}, \textit{selectionsort}, \textit{bubblesort}, \textit{combsort}, \textit{quicksort}, \textit{mergesort}, \textit{heapsort} e \textit{shellsort}. Neste artigo será apresentado apenas o algoritmo \textit{quicksort}, explicando o seu funcionamento e suas peculiaridades.
+Os mais populares algoritmos de ordenação são: \textit{insertionsort}, \textit{selectionsort}, \textit{bubblesort}, \textit{combsort}, \textit{quicksort}, \textit{mergesort}, \textit{heapsort} e \textit{shellsort}. Neste artigo, o algoritmo \textit{quicksort} será analisado, explicando o seu funcionamento, suas peculiaridades e o comportamento do seu particionamento.
 
 \section{\textit{Quicksort}}
 
-O \textit{quicksort} é um algoritmo de ordenação eficiente e muito rápido. Foi desenvolvido em 1961 por \textit{C.A.R. Hoare} \cite{hoare}, quando visitava a Universidade de \textit{Moscovo} como estudante.
+O \textit{quicksort} é um algoritmo de ordenação muito rápido e eficiente. Foi desenvolvido em 1961 por \textit{C.A.R. Hoare} \cite{hoare}, quando visitava a Universidade de \textit{Moscovo} como estudante.
 
 \textit{Hoare} trabalhava em um projeto de tradução de máquina para o \textit{National Physical Laboratory}. Ele criou o \textit{quicksort} ao tentar traduzir um dicionário de inglês para russo, ordenando as palavras, tendo como objetivo reduzir o problema original em subproblemas que poderiam ser resolvidos mais fácil e rapidamente. O algoritmo só foi publicado após uma série de refinamentos.
 
@@ -58,21 +56,21 @@ O  \textit{quicksort} é um algoritmo de ordenação por comparação não-estável, ou
 
 \section{Estratégia Utilizada}
 
-O \textit{quicksort} adota a estratégoa de divisão e consquita. A estratégia consiste em rearranjar as chaves de modo que chaves "menores" precedam chaves "maiores". Em seguida o \textit{quicksort} ordena as duas sublistas de chaves menores e maiores recursivamente até que a lista completa se encontre ordenada \cite{baase}.
+O \textit{quicksort} adota a estratégia de divisão e conquista. Essa estratégia consiste em rearranjar as chaves do problema de modo que chaves "menores" precedam chaves "maiores". Em seguida o \textit{quicksort} ordena as duas sub-listas de chaves menores e maiores recursivamente até que a lista completa se encontre ordenada \cite{baase}.
 
 O algoritmo \textit{quicksort} executa os seguintes passos:
 
 \begin{enumerate}
 	\item Escolha um elemento da lista, denominado pivô;
-	\item Rearranje a lista de forma que todos os elementos anteriores ao pivô sejam menores que ele, e todos os elementos posteriores ao pivô sejam maiores que ele. Ao fim do processo o pivô estará em sua posição final e haverão duas sublistas não-ordenadas. Essa operação é denominada particionameto;
-	\item Recursivamente ordene a sublista dos elementos menores e a sublista dos elementos maiores.
+	\item Rearranje a lista de forma que todos os elementos anteriores ao pivô sejam menores que ele, e todos os elementos posteriores ao pivô sejam maiores que ele. Ao fim do processo o pivô estará em sua posição final e haverão duas sub-listas não-ordenadas. Essa operação é denominada particionamento;
+	\item Recursivamente ordene a sub-lista dos elementos menores e a sub-lista dos elementos maiores.
 \end{enumerate}
 
 A base da recursão são as listas de tamanho zero ou um, que estão sempre ordenadas. O processo é finito, pois a cada iteração pelo menos um elemento é posto em sua posição final e não será mais manipulado na iteração seguinte.
 
 \subsection{Pseudo-Código}
 
-O Algoritmo~\ref{quicksort} demonstra o pseudo-código para o algoritmo  \textit{quicksort}. Podemos verificar que a função \textit{quicksort} recebe como parâmetros de entrada um \textit{array} e as posições final e inicial deste \textit{array}. Logo, o método de particionamento escolhido é chamado e como resultado retorna um elemento pivô. Este pivô é utilizado para realizar as chamadas recursivas das sublistas esquerda e direita do elemento pivô. Quando as listas se tornarem de tamanho 1, o algoritmo retorna o \textit{array} devidamente ordenado.
+O Algoritmo~\ref{quicksort} demonstra o pseudo-código para o algoritmo  \textit{quicksort}. Podemos verificar que a função \textit{quicksort} recebe como parâmetros de entrada um \textit{array} e suas posições inicial e final. Logo, o método de particionamento escolhido é chamado e como resultado retorna um elemento pivô. Este pivô é utilizado para realizar as chamadas recursivas das sub-listas à esquerda e direita do elemento pivô. Quando as listas se tornarem de tamanho 1, o algoritmo retorna o \textit{array} devidamente ordenado.
 
 O método \textit{Partition} do Algoritmo~\ref{quicksort} dependerá do particionamento escolhido para executar o algoritmo.
 
@@ -121,7 +119,7 @@ Para este método, a análise é um pouco mais complexa. Mesmo fixando o pivô ${x}$
 
 Mais precisamente: os índices ${i}$ e ${j}$ correm um em direção ao outro até que eles se cruzem, que sempre acontece em ${x}$ (por correção do algoritmo de particionamento de \textit{Hoare}). Isto divide eficazmente o \textit{array} em duas partes: a parte esquerda que é verificada pela variável índice ${i}$ e uma parte direita que é verificada pela variável índice ${j}$.
 
-Agora, uma troca é feita para cada par de elementos "fora do lugar", isto é, um elemento grande (maior do que ${x}$, que pertence a partição direita) que atualmente está localizado na partição esquerda e um elemento pequeno localizado na partição direita. Note-se que este par formado trabalha sempre para fora, ou seja, o número de pequenos elementos inicialmente na partição direita é igual ao número de grandes elementos na partição esquerda.
+Agora, uma troca é feita para cada par de elementos "fora do lugar", isto é, um elemento grande (maior do que ${x}$, que pertence a partição direita) que atualmente está localizado na partição esquerda e um elemento pequeno que esteja localizado na partição direita. Note-se que este par formado trabalha sempre para fora, ou seja, o número de pequenos elementos inicialmente na partição direita é igual ao número de grandes elementos na partição esquerda.
 
 Pode-se mostrar que o número destes pares é hiper geometricamente distribuído ${Hyp(n-1,n-x,x-1)}$: para os ${n - x}$ maiores elementos nós aleatoriamente traçamos suas posições no \textit{array} e temos ${x - 1}$ posições na partição esquerda . Por conseguinte, o número esperado de pares é ${(n-x)(x-1)/(n-1)}$ dado que o pivô é ${x}$.
 
@@ -181,7 +179,7 @@ Isto mostra, que para pequenos conjuntos de elementos, o método de \textit{Lomut
 
 O método de \textit{Lomuto} é simples e de fácil implementação, porém, não deve ser utilizado quando alto desempenho é exigido. O método de \textit{Hoare} comporta-se melhor para problemas que exigem alto desempenho e possui um melhor comportamento para listas já ordenadas ou preenchidas apenas com valores 0.
 
-Portanto, para utilização em softwares comerciais ou industriais, recomenda-se a utlização do método de \textit{Hoare}, ao invés do método de \textit{Lomuto}.
+Portanto, para utilização em softwares comerciais ou industriais, recomenda-se a utlização do método de particionamento de \textit{Hoare}, ao invés do método de particionamento de \textit{Lomuto}.
 
 \bibliographystyle{sbc}
 \bibliography{sbc-template}
