@@ -121,7 +121,7 @@ Os índices ${i}$ e ${j}$ correm um em direção ao outro até que eles se cruzem, q
 
 Agora, uma troca é feita para cada par de elementos "fora do lugar", isto é, um elemento grande (maior do que ${x}$, que pertence a partição direita) que atualmente está localizado na partição esquerda e um elemento pequeno que esteja localizado na partição direita. Note-se que este par formado trabalha sempre para fora, ou seja, o número de pequenos elementos inicialmente na partição direita é igual ao número de grandes elementos na partição esquerda.
 
-\cite{wild} mostrar que o número destes pares é hiper geometricamente distribuído ${Hyp(n-1,n-x,x-1)}$: para os ${n - x}$ maiores elementos nós aleatoriamente traçamos suas posições no \textit{array} e temos ${x - 1}$ posições na partição esquerda . Por conseguinte, o número esperado de pares é ${(n-x)(x-1)/(n-1)}$ dado que o pivô é ${x}$.
+\cite{wild} mostra que o número destes pares é hiper geometricamente distribuído ${Hyp(n-1,n-x,x-1)}$: para os ${n - x}$ maiores elementos nós aleatoriamente traçamos suas posições no \textit{array} e temos ${x - 1}$ posições na partição esquerda . Por conseguinte, o número esperado de pares é ${(n-x)(x-1)/(n-1)}$ dado que o pivô é ${x}$.
 
 Segundo \cite{wild}, a média de todos os valores dos pivôs é calcula para obter o número total esperado de trocas para o método de particionamento de \textit{Hoare}:
 
@@ -162,7 +162,7 @@ A máquina utilizada para realizar as simulações possui processador AMD Phenom(tm
 
 Para comparar os métodos, foram escolhidos dez diferentes tamanhos para o \textit{array}: 100, 500, 1.000, 5.000, 30.000, 80.000, 100.000, 150.000 e 200.000 elementos.
 
-Para cada tamanho especificado foram gerados \textit{arrays} de números aleatórios, permitindo valores repetidos. Foram realizadas 5 simulações para cada tamanho em cada método. A média dos tempos de execuções foram utilizadas para realizar a análise comparativa.
+Para cada tamanho especificado foram gerados \textit{arrays} de números aleatórios, permitindo valores repetidos. Foram realizadas 20 simulações para cada tamanho em cada método. A média dos tempos de execuções foram utilizadas para realizar a análise comparativa.
 
 Podemos verificar na Figura~\ref{graph} que para pequenos tamanhos do \textit{array} de elementos, o método de \textit{Lomuto} executou mais rápido. Porém, ao aumentarmos o tamanho do \textit{array} de elementos, o método de \textit{Hoare} apresenta melhores tempos de execução.
 
@@ -170,7 +170,7 @@ Isto mostra, que para pequenos conjuntos de elementos, o método de \textit{Lomut
 
 \begin{figure}[ht]
 \centering
-\includegraphics[width=1\textwidth]{grafico.png}
+\includegraphics[width=1\textwidth]{grafico1.png}
 \caption{Gráfico comparativo entre os tempo de execução dos métodos de \textit{Hoare} e \textit{Lomuto}.}
 \label{graph}
 \end{figure}
