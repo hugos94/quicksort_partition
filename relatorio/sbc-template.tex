@@ -107,7 +107,7 @@ Como apenas a ordem relativa conta, assumimos que os elementos são os números $1
 
 A variável índice ${j}$ escaneia o \textit{array} completo e sempre que encontra um elemento ${A[j]}$ menor que o pivô ${x}$, a troca é realizada. Entre os elementos ${1, ..., n}$, exatamente ${x - 1}$ são menores que ${x}$, então nós teremos ${x-1}$ trocas se o pivô for ${x}$.
 
-A expectativa geral então resulta do cálculo da média de todos os pivôs. Cada valor em ${\{1, ... ,n\}}$ tem a mesma probabilidade de se tornar pivô (especificamente probabilidade de  $\frac{1}{n}$), então temos
+A expectativa geral então resulta do cálculo da média de todos os pivôs. Segundo \cite{wild}, cada valor em ${\{1, ... ,n\}}$ tem a mesma probabilidade de $\frac{1}{n}$ de se tornar pivô, então serão realizadas
 \begin{equation}
 \frac{1}{n}\sum_{x=1}^{n}(x - 1) = \frac{n}{2} - \frac{1}{2}
 \end{equation} 
@@ -117,13 +117,13 @@ trocas, em média, para particionar um \textit{array} de comprimento ${n}$ com o 
 
 Para este método, a análise é um pouco mais complexa. Mesmo fixando o pivô ${x}$, o número de trocas permanece aleatório.
 
-Mais precisamente: os índices ${i}$ e ${j}$ correm um em direção ao outro até que eles se cruzem, que sempre acontece em ${x}$ (por correção do algoritmo de particionamento de \textit{Hoare}). Isto divide eficazmente o \textit{array} em duas partes: a parte esquerda que é verificada pela variável índice ${i}$ e uma parte direita que é verificada pela variável índice ${j}$.
+Os índices ${i}$ e ${j}$ correm um em direção ao outro até que eles se cruzem, que sempre acontece em ${x}$ (por correção do algoritmo de particionamento de \textit{Hoare}). Isto divide eficazmente o \textit{array} em duas partes: a parte esquerda que é verificada pela variável índice ${i}$ e uma parte direita que é verificada pela variável índice ${j}$.
 
 Agora, uma troca é feita para cada par de elementos "fora do lugar", isto é, um elemento grande (maior do que ${x}$, que pertence a partição direita) que atualmente está localizado na partição esquerda e um elemento pequeno que esteja localizado na partição direita. Note-se que este par formado trabalha sempre para fora, ou seja, o número de pequenos elementos inicialmente na partição direita é igual ao número de grandes elementos na partição esquerda.
 
-Pode-se mostrar que o número destes pares é hiper geometricamente distribuído ${Hyp(n-1,n-x,x-1)}$: para os ${n - x}$ maiores elementos nós aleatoriamente traçamos suas posições no \textit{array} e temos ${x - 1}$ posições na partição esquerda . Por conseguinte, o número esperado de pares é ${(n-x)(x-1)/(n-1)}$ dado que o pivô é ${x}$.
+\cite{wild} mostrar que o número destes pares é hiper geometricamente distribuído ${Hyp(n-1,n-x,x-1)}$: para os ${n - x}$ maiores elementos nós aleatoriamente traçamos suas posições no \textit{array} e temos ${x - 1}$ posições na partição esquerda . Por conseguinte, o número esperado de pares é ${(n-x)(x-1)/(n-1)}$ dado que o pivô é ${x}$.
 
-Finalmente, nós tiramos a média de todos os valores dos pivôs para obter o número total esperado de trocas para o método de particionamento de \textit{Hoare}:
+Segundo \cite{wild}, a média de todos os valores dos pivôs é calcula para obter o número total esperado de trocas para o método de particionamento de \textit{Hoare}:
 
 \begin{equation}
 \frac{1}{n}\sum_{x=1}^{n}\frac{(n - x)(x - 1)}{n - 1} = \frac{n}{6} - \frac{1}{3}.
